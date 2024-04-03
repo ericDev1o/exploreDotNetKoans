@@ -3,44 +3,57 @@ using DotNetKoans.Engine;
 
 namespace DotNetKoans.Koans;
 
+/// <summary>
+/// Be accurate in Assert.True() and Assert.Equal() usage.
+/// </summary>
 public class AboutAsserts : Koan
 {
-	//We shall contemplate truth by testing reality, via asserts.
+	/// <summary>
+	/// We shall contemplate truth by testing reality, via asserts.
+	/// </summary>
 	[Step(1)]
 	public void AssertTruth()
 	{
-		Assert.True(false); //This should be true
+		Assert.True(1 == 1);
 	}
 
-	//Enlightenment may be more easily achieved with appropriate messages
+	/// <summary>
+	/// Enlightenment may be more easily achieved with appropriate messages.
+	/// </summary>
 	[Step(2)]
 	public void AssertTruthWithMessage()
 	{
-		Assert.True(false, "This should be true -- Please fix this");
+		Assert.True("a" == "a", "This is be true");
 	}
 
-	//To understand reality, we must compare our expectations against reality
+	/// <summary>
+	/// To understand reality, we must compare our expectations against reality.
+	/// </summary>
 	[Step(3)]
 	public void AssertEquality()
 	{
 		var expectedValue = 3;
-		var actualValue = 1 + 1;
+		var actualValue = 1 + 1 + 1;
 		Assert.True(expectedValue == actualValue);
 	}
 
-	//Some ways of asserting equality are better than others
+	/// <summary>
+	/// Some ways of asserting equality are better than others.
+	/// </summary>
 	[Step(4)]
 	public void ABetterWayOfAssertingEquality()
 	{
 		var expectedValue = 3;
 		var actualValue = 1 + 1;
-		Assert.Equal(expectedValue, actualValue);
+		Assert.Equal(expectedValue, actualValue + 1);
 	}
 
-	//Sometimes we will ask you to fill in the values
+	/// <summary>
+	/// Sometimes we will ask you to fill in the values.
+	/// </summary>
 	[Step(5)]
 	public void FillInValues()
 	{
-		Assert.Equal(FILL_ME_IN, 1 + 1);
+		Assert.Equal(2, 1 + 1);
 	}
 }
