@@ -18,21 +18,21 @@ public class AboutStrings : Koan
 	public void DoubleQuotedStringsAreStrings()
 	{
 		var str = "Hello, World";
-		Assert.Equal(typeof(FillMeIn), str.GetType());
+		Assert.Equal(typeof(string), str.GetType());
 	}
 
 	[Step(2)]
 	public void SingleQuotedStringsAreNotStrings()
 	{
 		var str = 'H';
-		Assert.Equal(typeof(FillMeIn), str.GetType());
+		Assert.NotEqual(typeof(string), str.GetType());
 	}
 
 	[Step(3)]
 	public void CreateAStringWhichContainsDoubleQuotes()
 	{
 		var str = "Hello, \"World\"";
-		Assert.Equal(FILL_ME_IN, str.Length);
+		Assert.Equal(14, str.Length);
 	}
 
 	/// <summary>
@@ -42,7 +42,7 @@ public class AboutStrings : Koan
 	public void AnotherWayToCreateAStringWhichContainsDoubleQuotes()
 	{
 		var str = @"Hello, ""World""";
-		Assert.Equal(FILL_ME_IN, str.Length);
+		Assert.Equal(14, str.Length);
 	}
 
 	[Step(5)]
@@ -50,7 +50,7 @@ public class AboutStrings : Koan
 	{
 		var strA = @"Verbatim Strings can handle both ' and "" characters (when escaped)";
 		var strB = "Verbatim Strings can handle both ' and \" characters (when escaped)";
-		Assert.Equal(FILL_ME_IN, strA.Equals(strB));
+		Assert.True(strA.Equals(strB));
 	}
 
 	/// <summary>
