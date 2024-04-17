@@ -70,12 +70,11 @@ public class AboutStrings : Koan
 	public void VerbatimStringsCanHandleMultipleLinesToo()
 	{
 		var verbatimString = @"I
-			am a
-			broken line";
-
+		am a
+		broken line";
 		
-		var literalString = FILL_ME_IN;
-		Assert.Equal(FILL_ME_IN, verbatimString.Length);
+		var literalString = @"I\r\nam a\r\nbroken line";
+		Assert.Equal(literalString.Length, verbatimString.Length);
 
 		Assert.Equal(literalString, verbatimString);
 	}
@@ -90,7 +89,7 @@ public class AboutStrings : Koan
 	public void ACrossPlatformWayToHandleLineEndings()
 	{
 		var literalString = "I" + System.Environment.NewLine + "am a" + System.Environment.NewLine + "broken line";
-		var verbatimString = FILL_ME_IN;
+		var verbatimString = @"I\r\nam a\r\n broken line";
 		Assert.Equal(literalString, verbatimString);
 	}
 
@@ -98,7 +97,7 @@ public class AboutStrings : Koan
 	public void PlusWillConcatenateTwoStrings()
 	{
 		var str = "Hello, " + "World";
-		Assert.Equal(FILL_ME_IN, str);
+		Assert.Equal("Hello, World", str);
 	}
 
 	[Step(9)]
@@ -107,8 +106,8 @@ public class AboutStrings : Koan
 		var strA = "Hello, ";
 		var strB = "World";
 		var fullString = strA + strB;
-		Assert.Equal(FILL_ME_IN, strA);
-		Assert.Equal(FILL_ME_IN, strB);
+		Assert.Equal("Hello, ", strA);
+		Assert.Equal("World", strB);
 	}
 
 	[Step(10)]
@@ -117,8 +116,8 @@ public class AboutStrings : Koan
 		var strA = "Hello, ";
 		var strB = "World";
 		strA += strB;
-		Assert.Equal(FILL_ME_IN, strA);
-		Assert.Equal(FILL_ME_IN, strB);
+		Assert.Equal("Hello, World", strA);
+		Assert.Equal("World", strB);
 	}
 
 	/// <summary>
@@ -142,8 +141,8 @@ public class AboutStrings : Koan
 		var strB = "World";
 		strA += strB;
 		
-		Assert.Equal(FILL_ME_IN, originalString);
-		Assert.False(Object.ReferenceEquals(FILL_ME_IN, originalString));
+		Assert.Equal("Hello, ", originalString);
+		Assert.False(Object.ReferenceEquals(strA, originalString));
 	}
 
 	/// <summary>
@@ -165,7 +164,7 @@ public class AboutStrings : Koan
 		strBuilder.Append("lazy ");
 		strBuilder.Append("dog.");
 		var str = strBuilder.ToString();
-		Assert.Equal(FILL_ME_IN, str);
+		Assert.Equal("The quick brown fox jumped over the lazy dog.", str);
 	}
 	
 	/// <summary>
