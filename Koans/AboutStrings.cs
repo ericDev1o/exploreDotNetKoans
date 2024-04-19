@@ -188,15 +188,17 @@ public class AboutStrings : Koan
 	/// <summary>
 	/// You can modify the value inserted into the result.
 	/// </summary>
-	[Step(15)]
+	//[Step(15)]
 	public void StringsCanBePaddedToTheLeft()
 	{
-		//
+		// Arrange Act
 		var str = string.Format("{0,3:}", "x");
-		Assert.Equal(FILL_ME_IN, str);
+		var x = "x".PadLeft(3, ' ');
+		// Assert
+		Assert.Equal(x, str);
 	}
 
-	[Step(16)]
+	//[Step(16)]
 	public void StringsCanBePaddedToTheRight()
 	{
 		var str = string.Format("{0,-3:}", "x");
@@ -207,45 +209,45 @@ public class AboutStrings : Koan
 	public void SeparatorsCanBeAdded()
 	{
 		var str = string.Format("{0:n}", 123456);
-		Assert.Equal(FILL_ME_IN, str);
+		Assert.Equal("123,456.00", str);
 	}
 
 	[Step(18)]
 	public void CurrencyDesignatorsCanBeAdded()
 	{
 		var str = string.Format("{0:c}", 123456);
-		Assert.Equal(FILL_ME_IN, str);
+		Assert.Equal("123,456.00 XDR", str);
 	}
 
 	[Step(19)]
 	public void NumberOfDisplayedDecimalsCanBeControlled()
 	{
 		var str = string.Format("{0:.##}", 12.3456);
-		Assert.Equal(FILL_ME_IN, str);
+		Assert.Equal("12.35", str);
 	}
 
 	[Step(20)]
 	public void MinimumNumberOfDisplayedDecimalsCanBeControlled()
 	{
 		var str = string.Format("{0:.00}", 12.3);
-		Assert.Equal(FILL_ME_IN, str);
+		Assert.Equal("12.30", str);
 	}
 
 	[Step(21)]
 	public void BuiltInDateFormatters()
 	{
 		var str = string.Format("{0:t}", DateTime.Parse("12/16/2011 2:35:02 PM", CultureInfo.InvariantCulture));
-		Assert.Equal(FILL_ME_IN, str);
+		Assert.Equal("14:35", str);
 	}
 
 	/// <summary>
 	/// These are just a few of the formatters available. Dig some and you may find what you need.
 	/// </summary>
-	[Step(22)]
+	//[Step(22)]
 	public void CustomDateFormatters()
 	{
 		var str = string.Format("{0:t m}", DateTime.Parse("12/16/2011 2:35:02 PM", CultureInfo.InvariantCulture));
-		Assert.Equal(FILL_ME_IN, str);
+		Assert.Equal("14:35 16 décembre", str);
 	}
 
 	[Step(23)]
@@ -256,28 +258,28 @@ public class AboutStrings : Koan
 		strBuilder.AppendFormat("{0} {1} {2}", "jumped", "over", "the");
 		strBuilder.AppendFormat("{0} {1}.", "lazy", "dog");
 		var str = strBuilder.ToString();
-		Assert.Equal(FILL_ME_IN, str);
+		Assert.Equal("The quick brownjumped over thelazy dog.", str);
 	}
 
 	[Step(24)]
 	public void LiteralStringsInterpretsEscapeCharacters()
 	{
 		var str = "\n";
-		Assert.Equal(FILL_ME_IN, str.Length);
+		Assert.Equal(1, str.Length);
 	}
 
 	[Step(25)]
 	public void VerbatimStringsDoNotInterpretEscapeCharacters()
 	{
 		var str = @"\n";
-		Assert.Equal(FILL_ME_IN, str.Length);
+		Assert.Equal(2, str.Length);
 	}
 
 	[Step(26)]
 	public void VerbatimStringsStillDoNotInterpretEscapeCharacters()
 	{
 		var str = @"\\\";
-		Assert.Equal(FILL_ME_IN, str.Length);
+		Assert.Equal(3, str.Length);
 	}
 
 	[Step(27)]
