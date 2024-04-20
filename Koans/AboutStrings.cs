@@ -254,11 +254,11 @@ public class AboutStrings : Koan
 	public void StringBuilderCanUseFormatAsWell()
 	{
 		var strBuilder = new System.Text.StringBuilder();
-		strBuilder.AppendFormat("{0} {1} {2}", "The", "quick", "brown");
-		strBuilder.AppendFormat("{0} {1} {2}", "jumped", "over", "the");
+		strBuilder.AppendFormat("{0} {1} {2} {3} {4}", "The", "quick", "brown", "fox", "");
+		strBuilder.AppendFormat("{0} {1} {2} {3}", "jumped", "over", "the", "");
 		strBuilder.AppendFormat("{0} {1}.", "lazy", "dog");
 		var str = strBuilder.ToString();
-		Assert.Equal("The quick brownjumped over thelazy dog.", str);
+		Assert.Equal("The quick brown fox jumped over the lazy dog.", str);
 	}
 
 	[Step(24)]
@@ -286,15 +286,15 @@ public class AboutStrings : Koan
 	public void YouCanGetASubstringFromAString()
 	{
 		var str = "Bacon, lettuce and tomato";
-		Assert.Equal(FILL_ME_IN, str.Substring(19));
-		Assert.Equal(FILL_ME_IN, str.Substring(7, 3));
+		Assert.Equal("tomato", str.Substring(19));
+		Assert.Equal("let", str.Substring(7, 3));
 	}
 
 	[Step(28)]
 	public void YouCanGetASingleCharacterFromAString()
 	{
 		var str = "Bacon, lettuce and tomato";
-		Assert.Equal(FILL_ME_IN, str[0]);
+		Assert.Equal('B', str[0]);
 	}
 
 	[Step(29)]
@@ -302,7 +302,7 @@ public class AboutStrings : Koan
 	{
 		Assert.Equal(97, 'a');
 		Assert.Equal(98, 'b');
-		Assert.Equal(FILL_ME_IN, 'b' == ('a' + 1));
+		Assert.True('b' == ('a' + 1));
 	}
 
 	[Step(30)]
@@ -310,7 +310,7 @@ public class AboutStrings : Koan
 	{
 		var str = "Sausage Egg Cheese";
 		string[] words = str.Split();
-		Assert.Equal(new[] { FILL_ME_IN }, words);
+		Assert.Equal(new[] { "Sausage", "Egg", "Cheese" }, words);
 	}
 
 	[Step(31)]
