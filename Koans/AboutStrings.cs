@@ -73,7 +73,7 @@ public class AboutStrings : Koan
 am a
 broken line";
 		
-		var literalString = string.Concat("I", Environment.NewLine, "am a", Environment.NewLine, "broken line");
+		var literalString = string.Concat("I", "\r\n", "am a", "\r\n", "broken line");
 		Assert.Equal(literalString.Length, verbatimString.Length);
 		Assert.Equal(literalString, verbatimString);
 	}
@@ -84,11 +84,13 @@ broken line";
 	/// the hardcoded escape sequence. A much better way
 	/// (We'll handle concatenation and better ways of that in a bit).
 	/// </summary>
-	//toDo [Step(7)]
+	[Step(7)]
 	public void ACrossPlatformWayToHandleLineEndings()
 	{
-		var literalString = "I" + System.Environment.NewLine + "am a" + System.Environment.NewLine + "broken line";
-		var verbatimString = @"I\r\nam a\r\n broken line";
+		var literalString = "I" + Environment.NewLine + "am a" + Environment.NewLine + "broken line";
+		var verbatimString = @"I
+am a
+broken line";
 		Assert.Equal(literalString, verbatimString);
 	}
 
@@ -187,21 +189,23 @@ broken line";
 	/// <summary>
 	/// You can modify the value inserted into the result.
 	/// </summary>
-	//[Step(15)]
+	[Step(15)]
 	public void StringsCanBePaddedToTheLeft()
 	{
 		// Arrange Act
-		var str = string.Format("{0,3:}", "x");
+		var str = string.Format("{0,3}", "x");
 		var x = "x".PadLeft(3, ' ');
 		// Assert
 		Assert.Equal(x, str);
 	}
 
-	//[Step(16)]
+	[Step(16)]
 	public void StringsCanBePaddedToTheRight()
 	{
-		var str = string.Format("{0,-3:}", "x");
-		Assert.Equal(FILL_ME_IN, str);
+		// Arrange Act
+		var str = string.Format("{0,-3}", "x"); // Note the '-' sign to indicate left alignment
+		var x = "x".PadRight(3, ' ');
+		Assert.Equal(x, str);
 	}
 
 	[Step(17)]
@@ -242,11 +246,11 @@ broken line";
 	/// <summary>
 	/// These are just a few of the formatters available. Dig some and you may find what you need.
 	/// </summary>
-	//[Step(22)]
+	[Step(22)]
 	public void CustomDateFormatters()
 	{
-		var str = string.Format("{0:t m}", DateTime.Parse("12/16/2011 2:35:02 PM", CultureInfo.InvariantCulture));
-		Assert.Equal("14:35 16 décembre", str);
+		var str = string.Format("{0:HH:mm dd MMMM}", DateTime.Parse("12/16/2011 2:35:02 PM", CultureInfo.InvariantCulture));
+		Assert.Equal("14:35 16 December", str);
 	}
 
 	[Step(23)]
@@ -343,10 +347,10 @@ broken line";
 		Assert.Equal("Mr. John Doe is 33 years old", str);
 	}
 	
-	//[Step(34)]
+	[Step(34)]
 	public void InterpolationSupportsFormatAsWell()
 	{
-		var str = $"{DateTime.Parse("12/16/2011 2:35:02 PM", CultureInfo.InvariantCulture):t m}";
-		Assert.Equal("", str);
+		var str = $"{DateTime.Parse("12/16/2011 2:35:02 PM", CultureInfo.CreateSpecificCulture("en-US")):G}";
+		Assert.Equal("16/12/2011 14:35:02", str.ToString(CultureInfo.CreateSpecificCulture("fr-FR")));
 	}
 }
