@@ -70,13 +70,12 @@ public class AboutStrings : Koan
 	public void VerbatimStringsCanHandleMultipleLinesToo()
 	{
 		var verbatimString = @"I
-		am a
-		broken line";
+am a
+broken line";
 		
-		var literalString = @"I\r\nam a\r\nbroken line";
+		var literalString = string.Concat("I", Environment.NewLine, "am a", Environment.NewLine, "broken line");
 		Assert.Equal(literalString.Length, verbatimString.Length);
-
-		//toDo Assert.Equal(literalString, verbatimString);
+		Assert.Equal(literalString, verbatimString);
 	}
 
 	/// <summary>
