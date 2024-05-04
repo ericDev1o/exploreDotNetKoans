@@ -98,11 +98,11 @@ public class AboutFloats : Koan
 	{
 		var f = 0.3f + 0.6f;
 		var d = 0.3d + 0.6d;
-		var dec = 0.3M + 0.6M;
+		var dec = 0.3m + 0.6m;
 
 		Assert.False(f == 0.9f);
 		Assert.False(d == 0.9d);
-		Assert.True(dec == 0.9M);
+		Assert.True(dec == 0.9m);
 
 		//Math with floating point numbers doesn't always behave how humans expect.
 		//This is because floating point numbers are stored in binary,

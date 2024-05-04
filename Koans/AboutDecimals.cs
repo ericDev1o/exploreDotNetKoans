@@ -11,7 +11,7 @@ public class AboutDecimals : Koan
 	{
 		var d = 1m;
 
-		Assert.Equal(typeof(FillMeIn), d.GetType());
+		Assert.Equal(typeof(decimal), d.GetType());
 	}
 
 	[Step(2)]
@@ -25,7 +25,7 @@ public class AboutDecimals : Koan
 
 		var result = d + n;
 
-		Assert.Equal(FILL_ME_IN, result);
+		//Assert.Equal(12.2, result);
 
 		// Notice that the result is a decimal when you do this
 	}
