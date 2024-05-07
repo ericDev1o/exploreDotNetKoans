@@ -69,7 +69,7 @@ public class AboutDecimals : Koan
 		var twentyNineDigits = 0.99999999999999999999999999999m;
 
 		Assert.Equal(0.9999999999999999999999999999m, twentyEightDigits);
-		Assert.Equal(1.0000000000000000000000000000m, twentyNineDigits); //.net 8.0.203 behavior
+		Assert.Equal(1.0000000000000000000000000000m, twentyNineDigits); //.net 8.0.204 behavior
 
 		//Decimals use 128 bits to store their data, therefore they can store
 		//up to 28 significant digits
