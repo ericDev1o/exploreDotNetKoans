@@ -9,7 +9,7 @@ public class AboutConstants : Koan
 	public void ConstantsMustBeInitalizedAsDeclared()
 	{
 		const int months = 12;
-		Assert.Equal(FILL_ME_IN, 12);
+		Assert.Equal(months, 12);
 	}
 
 	[Step(2)]
