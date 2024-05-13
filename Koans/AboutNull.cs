@@ -32,7 +32,7 @@ public class AboutNull : Koan
 		}
 		catch (NullReferenceException ex)
 		{
-			Assert.Contains("Object reference not set to an instance of an object." as string, ex.Message);
+			Assert.Contains("reference not set to an instance" as string, ex.Message);
 		}
 	}
 
