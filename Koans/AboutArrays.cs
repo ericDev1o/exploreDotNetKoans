@@ -76,10 +76,14 @@ public class AboutArrays : Koan
 		var array = new[] { 1, 2 };
 		var stack = new Stack(array);
 		stack.Push("last");
-		//Assert.Equal(new[] { 1, 2, "last"}, stack.ToArray());
+		var stackedArray = stack.ToArray();
+		Assert.Equal(new object[] { 1, 2, "last"}, stackedArray.Reverse());
 		var poppedValue = stack.Pop();
+		stackedArray = stack.ToArray();
 		Assert.Equal("last", poppedValue);
-		//Assert.Equal(array, stack.ToArray());
+		Assert.Equal(array.Length, stackedArray.Length);
+		Assert.Equal(array[0], stackedArray[1]);
+		Assert.Equal(array[1], stackedArray[0]);
 	}
 
 	[Step(6)]
@@ -93,16 +97,15 @@ public class AboutArrays : Koan
 		var list = new LinkedList<string>(array);
 
 		list.AddFirst("Say");
-		//Assert.Equal(FILL_ME_IN, list.ToArray());
+		Assert.Equal(new[] { "Say", "Hello", "World" }, list.ToArray());
 
 		list.RemoveLast();
-		//Assert.Equal(FILL_ME_IN, list.ToArray());
+		Assert.Equal(new[] { "Say", "Hello" }, list.ToArray());
 
 		list.RemoveFirst();
-		//Assert.Equal(FILL_ME_IN, list.ToArray());
+		Assert.Equal(new[] { "Hello" }, list.ToArray());
 
 		list.AddAfter(list.Find("Hello"), "World");
-		//Assert.Equal(FILL_ME_IN, list.ToArray());
+		Assert.Equal(new[] { "Hello", "World" }, list.ToArray());
 	}
-
 }
