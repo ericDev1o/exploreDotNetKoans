@@ -26,6 +26,8 @@ public class AboutClasses : Koan
 		// when you declare a variable of a reference type, the variable
 		// contains the value null until you explicitly create an instance
 		object foo = null;
+		Assert.Null(foo);
+		foo = 1;
 		Assert.NotNull(foo);
 	}
 
@@ -42,7 +44,9 @@ public class AboutClasses : Koan
 	{
 		// Try to assign visible class members
 		var foo = new Foo2();
+		foo.Int = 1;
 		Assert.Equal(1, foo.Int);
+		foo._str = "Bar";
 		Assert.Equal("Bar", foo._str);
 	}
 
@@ -63,9 +67,12 @@ public class AboutClasses : Koan
 	[Step(3)]
 	public void UseAccessorsToReturnInstanceVariables()
 	{
-		var foo = new Foo3();
-		// make sure it won't explode
-		foo.Do();
+        var foo = new Foo3
+        {
+            // make sure it won't explode
+            Internal = false
+        };
+        foo.Do();
 	}
 
 	class Foo4
@@ -77,15 +84,15 @@ public class AboutClasses : Koan
 	[Step(4)]
 	public void UseConstructorsToDefineInitialValues()
 	{
-		Foo4 foo = default(Foo4);
+		Foo4 foo = new Foo4("Bar");
 		Assert.Equal("Bar", foo.Bar);
 	}
 
 	[Step(5)]
 	public void DifferentObjectsHasDifferentInstanceVariables()
 	{
-		Foo4 foo1 = new Foo4();
-		Foo4 foo2 = new Foo4();
+		Foo4 foo1 = new Foo4("foo1");
+		Foo4 foo2 = new Foo4("foo2");
 		Assert.NotEqual(foo1.Bar, foo2.Bar);
 	}
 
@@ -93,9 +100,17 @@ public class AboutClasses : Koan
 	{
 		public int Val { get; }
 		public Foo5(int val = 0) => Val = val;
-		public Foo5 Self() =>
-			throw new InvalidOperationException(nameof(Self));
-
+		public Foo5 Self()
+		{
+			try
+			{
+				return this;
+			}
+			catch(Exception e)
+			{
+				throw new InvalidOperationException(nameof(Self));
+			}
+		}
 		public override string ToString()
 		{
 			return base.ToString();
@@ -103,7 +118,8 @@ public class AboutClasses : Koan
 
 		public override bool Equals(object obj)
 		{
-			return base.Equals(obj);
+			Foo5 foo5 = (Foo5)obj;
+			return this.Val == foo5.Val;
 		}
 
 		public override int GetHashCode()
@@ -116,6 +132,7 @@ public class AboutClasses : Koan
 	public void MemberMethodSelfRefersToContainingObject()
 	{
 		Foo5 foo = new Foo5();
+		Assert.Equal(0, foo.Val);
 		Assert.Equal(foo, foo.Self());
 	}
 
@@ -123,7 +140,7 @@ public class AboutClasses : Koan
 	public void ToStringProvidesStringRepresentationOfAnObject()
 	{
 		Foo5 foo = new Foo5();
-		Assert.Equal("Foo5", foo.ToString());
+		Assert.Equal("DotNetKoans.Koans.AboutClasses+Foo5", foo.ToString());
 	}
 
 	[Step(8)]
@@ -132,7 +149,7 @@ public class AboutClasses : Koan
 		Foo5 foo1 = new Foo5(3);
 		Foo5 foo2 = new Foo5(3);
 		// you can define how objects are compared
-		Assert.True(Object.Equals(foo1, foo2));
+		Assert.True(foo1.Equals(foo2));
 		// references are still different
 		Assert.False(Object.ReferenceEquals(foo1, foo2));
 	}
