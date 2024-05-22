@@ -57,20 +57,20 @@ public class AboutInheritance : Koan
 	[Step(1)]
 	public void SubclassesHaveTheParentAsAnAncestor()
 	{
-		Assert.True(typeof(FillMeIn).IsAssignableFrom(typeof(Chihuahua)));
+		Assert.True(typeof(Dog).IsAssignableFrom(typeof(Chihuahua)));
 	}
 
 	[Step(2)]
 	public void AllClassesUltimatelyInheritFromAnObject()
 	{
-		Assert.True(typeof(FillMeIn).IsAssignableFrom(typeof(Chihuahua)));
+		Assert.True(typeof(object).IsAssignableFrom(typeof(Chihuahua)));
 	}
 
 	[Step(3)]
 	public void SubclassesInheritBehaviorFromParentClass()
 	{
 		var chico = new Chihuahua("Chico");
-		Assert.Equal(FILL_ME_IN, chico.Name);
+		Assert.Equal("Chico", chico.Name);
 	}
 
 	[Step(4)]
