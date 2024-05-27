@@ -110,7 +110,7 @@ public class AboutMethods : Koan
 	[Step(7)]
 	public void CallingStaticMethodsWithoutAnInstance()
 	{
-		Assert.Equal(FILL_ME_IN, InnerSecret.Key());
+		Assert.Equal("Key", InnerSecret.Key());
 	}
 
 	//In fact, you can't call it on an instance variable
@@ -123,7 +123,7 @@ public class AboutMethods : Koan
 	public void CallingPublicMethodsOnAnInstance()
 	{
 		InnerSecret secret = new InnerSecret();
-		Assert.Equal(FILL_ME_IN, secret.Secret());
+		Assert.Equal("Secret", secret.Secret());
 	}
 
 	//Protected methods can only be called by a subclass
@@ -134,7 +134,7 @@ public class AboutMethods : Koan
 	public void CallingProtectedMethodsOnAnInstance()
 	{
 		StateSecret secret = new StateSecret();
-		Assert.Equal(FILL_ME_IN, secret.InformationLeak());
+		Assert.Equal("This is secret", secret.InformationLeak());
 	}
 
 	//But, we can't call the private methods of InnerSecret
@@ -151,7 +151,7 @@ public class AboutMethods : Koan
 		string superSecretMessage = secret.GetType()
 			.GetMethod("SooperSeekrit", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
 			.Invoke(secret, null) as string;
-		Assert.Equal(FILL_ME_IN, superSecretMessage);
+		Assert.Equal("No one will find me!", superSecretMessage);
 	}
 
 	//Up till now we've had explicit return types. It's also
@@ -167,8 +167,8 @@ public class AboutMethods : Koan
 	[Step(11)]
 	public void CallingGenericMethods()
 	{
-		Assert.Equal(typeof(FillMeIn), GiveMeBack<int>(1).GetType());
+		Assert.Equal(typeof(int), GiveMeBack<int>(1).GetType());
 
-		Assert.Equal(FILL_ME_IN, GiveMeBack<string>("Hi!"));
+		Assert.Equal("Hi!", GiveMeBack<string>("Hi!"));
 	}
 }
