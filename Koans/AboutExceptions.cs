@@ -32,10 +32,10 @@ public class AboutExceptions : Koan
 			awareness += 1;
 		}
 
-		Assert.Equal(FILL_ME_IN, awareness);
+		Assert.Equal(1, awareness);
 	}
 
-	[Step(3)]
+	[Step(2)]
 	public void ExceptionMessages()
 	{
 		// An exception usually contains a message which contains more information about what happened.
@@ -53,11 +53,10 @@ public class AboutExceptions : Koan
 			status = exceptionObject.Message;
 		}
 
-		Assert.Equal(FILL_ME_IN, status);
-
+		Assert.Equal("Ohm", status);
 	}
 
-	[Step(4)]
+	[Step(3)]
 	public void SystemException()
 	{
 		// A system exception is thrown when the system ends up in a bad place.
@@ -70,17 +69,22 @@ public class AboutExceptions : Koan
 			SaveKarmaToDisk();
 			KarmaIsSaved = true;
 		}
+		catch(System.IO.IOException e) {
+			Console.WriteLine("File system error: " + e.Message);
+		}
+		catch(System.Exception e) {
+			Console.WriteLine("Error");
+		}
 		// FYI: This will now only catch exceptions that are of the type System.SystemException
-		catch (SystemException)
-		{
+		/*catch (ConfidenceException c) {
 			// You can put any logic you want in here and it will only run if the exception is thrown.
 			Console.WriteLine("Our program had an error, your karma was not saved. Sorry man");
-		}
+		}*/
 
-		Assert.Equal(FILL_ME_IN, KarmaIsSaved);
+		Assert.False(KarmaIsSaved);
 	}
 
-	[Step(5)]
+	[Step(4)]
 	public void IndexOutOfBoundsException()
 	{
 		// An Index out of bounds exception will be thrown if the application tries to access an index that is simply not there
@@ -101,7 +105,7 @@ public class AboutExceptions : Koan
 		Assert.Equal(FILL_ME_IN, myCurrentState);
 	}
 
-	[Step(6)]
+	[Step(5)]
 	public void OurVeryOwnException()
 	{
 		// We can create our own exceptions that will help other developers or users
@@ -137,5 +141,5 @@ public class AboutExceptions : Koan
 
 	// This is just a helper function, don't worry about it
 	public void SaveKarmaToDisk() =>
-		throw new System.IO.IOException();
+		throw new System.IO.IOException("Couldn't save the karma");
 }
