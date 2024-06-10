@@ -102,7 +102,7 @@ public class AboutExceptions : Koan
 			myCurrentState = states[2];
 		}
 
-		Assert.Equal(FILL_ME_IN, myCurrentState);
+		Assert.Equal("Gaining Awareness", myCurrentState);
 	}
 
 	[Step(5)]
@@ -126,7 +126,7 @@ public class AboutExceptions : Koan
 			IKnowNothingAboutExceptions = false;
 		}
 
-		Assert.Equal(FILL_ME_IN, IKnowNothingAboutExceptions);
+		Assert.False(IKnowNothingAboutExceptions);
 	}
 
 	// This is how we defined our own custom exception. 
