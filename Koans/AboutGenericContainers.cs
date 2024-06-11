@@ -15,10 +15,10 @@ public class AboutGenericContainers : Koan
 		//The size of an array cannot be changed after you allocate it. To get around that
 		//you need a class from the System.Collections namespace such as ArrayList
 		ArrayList list = new ArrayList();
-		Assert.Equal(FILL_ME_IN, list.Count);
+		Assert.Equal(0, list.Count);
 
 		list.Add(42);
-		Assert.Equal(FILL_ME_IN, list.Count);
+		Assert.Equal(1, list.Count);
 	}
 
 	[Step(2)]
@@ -26,7 +26,7 @@ public class AboutGenericContainers : Koan
 	{
 		ArrayList list = new ArrayList();
 		System.Reflection.MethodInfo method = list.GetType().GetMethod("Add");
-		Assert.Equal(typeof(FillMeIn), method.GetParameters()[0].ParameterType);
+		Assert.Equal(typeof(Object), method.GetParameters()[0].ParameterType);
 	}
 
 	[Step(3)]
