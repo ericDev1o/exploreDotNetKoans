@@ -37,8 +37,12 @@ public class AboutGenericContainers : Koan
 		ArrayList list = new ArrayList();
 		list.Add(42);
 		int x = 0;
-		//x = (int)list[0];
-		Assert.Equal(42, x);
+		list.Add(x);
+		Assert.Equal(0, list[1]);
+		short shortX = 0;
+		list.Add(shortX);
+		Assert.NotEqual(0, list[2]);
+		Assert.Equal(0, (short)list[2]);
 	}
 
 	[Step(4)]
@@ -49,8 +53,8 @@ public class AboutGenericContainers : Koan
 		ArrayList list = new ArrayList();
 		list.Add(42);
 		list.Add("forty two");
-		Assert.Equal(FILL_ME_IN, list[0]);
-		Assert.Equal(FILL_ME_IN, list[1]);
+		Assert.Equal(42, (int)list[0]);
+		Assert.Equal("forty two", (string)list[1]);
 
 		//While there are a few cases where it could be nice, instead what it means is that 
 		//anytime your code works with an array list you have to check that the element is 
@@ -60,10 +64,15 @@ public class AboutGenericContainers : Koan
 	[Step(5)]
 	public void Boxing()
 	{
-		short s = 5;
-		object os = s;
-		Assert.Equal(s.GetType(), os.GetType());
-		Assert.Equal(s, os);
+		long l = 5;
+		object os = l;
+		Assert.Equal(l.GetType(), os.GetType());
+		Assert.Equal(l, os);
+		ArrayList list = new ArrayList();
+		list.Add(l);
+		list.Add(os);
+		Assert.Equal(l, list[0]);
+		Assert.Equal(os, list[1]);
 
 		//While it is true that everything is an object and all the above passes, not everything is quite as it seems.
 		//Under the covers .NET allocates memory for all value type objects (int, double, bool,...) on the stack. This is 
@@ -83,16 +92,19 @@ public class AboutGenericContainers : Koan
 		//The "T" in the definition of List<T> is the type argument. You cannot declare an instance of List<T> without also
 		//supplying a type in place of T.
 		var list = new List<int>();
-		Assert.Equal(FILL_ME_IN, list.Count);
+		Assert.Equal(0, list.Count);
 
 		list.Add(42);
-		Assert.Equal(FILL_ME_IN, list.Count);
+		Assert.Equal(1, list.Count);
 
 		//Now just like int[], you can have a type safe dynamic sized container
 		//list.Add("forty two"); //<--Unlike ArrayList this is illegal.
 
 		//List<T> also solves the boxing/unboxing issues of ArrayList. Unfortunately, you'll have to take Microsoft's word for it
 		//as I can't find a way to prove it without some ugly MSIL beyond the scope of these Koans.
+
+		var listT = new List<object>(){42, "forty two"};
+		Assert.Equal(2, listT.Count);
 	}
 
 	public class Widget
