@@ -117,7 +117,7 @@ public class AboutGenericContainers : Koan
 		//Just as with Array, list will work with any type
 		List<Widget> list = new List<Widget>();
 		list.Add(new Widget());
-		Assert.Equal(FILL_ME_IN, list.Count);
+		Assert.Equal(1, list.Count);
 	}
 
 	[Step(8)]
@@ -125,7 +125,7 @@ public class AboutGenericContainers : Koan
 	{
 		//Like array you can create a list with an initial set of values easily
 		var list = new List<int> { 1, 2, 3 };
-		Assert.Equal(FILL_ME_IN, list.Count);
+		Assert.Equal(3, list.Count);
 	}
 
 	[Step(9)]
@@ -134,7 +134,7 @@ public class AboutGenericContainers : Koan
 		//You can add multiple items to a list at once
 		List<int> list = new List<int>();
 		list.AddRange(new[] { 1, 2, 3 });
-		Assert.Equal(FILL_ME_IN, list.Count);
+		Assert.Equal(3, list.Count);
 	}
 
 	[Step(10)]
@@ -142,7 +142,7 @@ public class AboutGenericContainers : Koan
 	{
 		//Just as with array, you can use the subscript notation to access any element in a list.
 		List<int> list = new List<int> { 5, 6, 7 };
-		Assert.Equal(FILL_ME_IN, list[2]);
+		Assert.Equal(7, list[2]);
 	}
 
 	[Step(11)]
@@ -150,14 +150,14 @@ public class AboutGenericContainers : Koan
 	{
 		List<int> list = new List<int> { 1, 2, 3 };
 		//You cannot attempt to get data that doesn't exist
-		Assert.Throws(typeof(FillMeIn), delegate () { int x = list[3]; });
+		Assert.Throws(typeof(ArgumentOutOfRangeException), delegate () { int x = list[3]; });
 	}
 
 	[Step(12)]
 	public void ConvertingToFixedSize()
 	{
 		List<int> list = new List<int> { 1, 2, 3 };
-		Assert.Equal(FILL_ME_IN, list.ToArray());
+		Assert.Equal(new int[] {1, 2, 3}, list.ToArray());
 	}
 
 	[Step(13)]
@@ -165,7 +165,7 @@ public class AboutGenericContainers : Koan
 	{
 		List<int> list = new List<int> { 1, 2, 3 };
 		list.Insert(1, 6);
-		Assert.Equal(FILL_ME_IN, list.ToArray());
+		Assert.Equal(new int[] { 1, 6, 2, 3 }, list.ToArray());
 	}
 
 	[Step(14)]
