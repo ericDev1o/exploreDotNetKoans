@@ -173,22 +173,22 @@ public class AboutGenericContainers : Koan
 	{
 		List<int> list = new List<int> { 2, 1, 2, 3 };
 		list.Remove(2);
-		Assert.Equal(FILL_ME_IN, list.ToArray());
+		Assert.Equal(new int[] { 1, 2, 3 }, list.ToArray());
 	}
 
 	[Step(15)]
 	public void StackPushPop()
 	{
 		var stack = new Stack<int>();
-		Assert.Equal(FILL_ME_IN, stack.Count);
+		Assert.Equal(0, stack.Count);
 
 		stack.Push(42);
-		Assert.Equal(FILL_ME_IN, stack.Count);
+		Assert.Equal(1, stack.Count);
 
 		int x = stack.Pop();
-		Assert.Equal(FILL_ME_IN, x);
+		Assert.Equal(42, x);
 
-		Assert.Equal(FILL_ME_IN, stack.Count);
+		Assert.Equal(0, stack.Count);
 	}
 
 	[Step(16)]
@@ -199,7 +199,7 @@ public class AboutGenericContainers : Koan
 		stack.Push(2);
 		stack.Push(3);
 
-		Assert.Equal(FILL_ME_IN, stack.ToArray());
+		Assert.Equal(new int[] { 3, 2, 1 }, stack.ToArray());
 	}
 
 	[Step(17)]
@@ -207,9 +207,9 @@ public class AboutGenericContainers : Koan
 	{
 		Queue<string> queue = new Queue<string>();
 		queue.Enqueue("one");
-		Assert.Equal(FILL_ME_IN, queue.Peek());
+		Assert.Equal("one", queue.Peek());
 		queue.Enqueue("two");
-		Assert.Equal(FILL_ME_IN, queue.Peek());
+		Assert.Equal("one", queue.Peek());
 	}
 
 	[Step(18)]
@@ -218,8 +218,8 @@ public class AboutGenericContainers : Koan
 		Queue<string> queue = new Queue<string>();
 		queue.Enqueue("one");
 		queue.Enqueue("two");
-		Assert.Equal(FILL_ME_IN, queue.Dequeue());
-		Assert.Equal(FILL_ME_IN, queue.Count);
+		Assert.Equal("one", queue.Dequeue());
+		Assert.Equal(1, queue.Count);
 	}
 
 	[Step(19)]
