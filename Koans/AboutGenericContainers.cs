@@ -227,9 +227,9 @@ public class AboutGenericContainers : Koan
 	{
 		//Dictionary<TKey, TValue> is .NET's key value store. The key and the value do not need to be the same types.
 		Dictionary<int, string> dictionary = new Dictionary<int, string>();
-		Assert.Equal(FILL_ME_IN, dictionary.Count);
+		Assert.Equal(0, dictionary.Count);
 		dictionary[1] = "one";
-		Assert.Equal(FILL_ME_IN, dictionary.Count);
+		Assert.Equal(1, dictionary.Count);
 	}
 
 	[Step(20)]
@@ -239,8 +239,8 @@ public class AboutGenericContainers : Koan
 		dictionary["one"] = "uno";
 		dictionary["two"] = "dos";
 		//The most common way to locate data is with the subscript notation.
-		Assert.Equal(FILL_ME_IN, dictionary["one"]);
-		Assert.Equal(FILL_ME_IN, dictionary["two"]);
+		Assert.Equal("uno", dictionary["one"]);
+		Assert.Equal("dos", dictionary["two"]);
 	}
 
 	[Step(21)]
@@ -248,7 +248,7 @@ public class AboutGenericContainers : Koan
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
 		dictionary["one"] = "uno";
-		Assert.Throws(typeof(FillMeIn), delegate () { string s = dictionary["two"]; });
+		Assert.Throws(typeof(KeyNotFoundException), delegate () { string s = dictionary["two"]; });
 	}
 
 	[Step(22)]
@@ -266,7 +266,7 @@ public class AboutGenericContainers : Koan
 		{
 			result = "dos";
 		}
-		Assert.Equal(FILL_ME_IN, result);
+		Assert.Equal("dos", result);
 	}
 
 	[Step(23)]
@@ -283,7 +283,7 @@ public class AboutGenericContainers : Koan
 		{
 			result = "dos";
 		}
-		Assert.Equal(FILL_ME_IN, result);
+		Assert.Equal("dos", result);
 	}
 
 	[Step(24)]
@@ -296,7 +296,7 @@ public class AboutGenericContainers : Koan
 		{
 			result = "dos";
 		}
-		Assert.Equal(FILL_ME_IN, result);
+		Assert.Equal("dos", result);
 	}
 
 	[Step(25)]
@@ -304,8 +304,8 @@ public class AboutGenericContainers : Koan
 	{
 		//Although it is not common, you can initialize a dictionary...
 		var dictionary = new Dictionary<string, string> { { "one", "uno" }, { "two", "dos" } };
-		Assert.Equal(FILL_ME_IN, dictionary["one"]);
-		Assert.Equal(FILL_ME_IN, dictionary["two"]);
+		Assert.Equal("uno", dictionary["one"]);
+		Assert.Equal("dos", dictionary["two"]);
 	}
 
 	[Step(26)]
@@ -314,8 +314,8 @@ public class AboutGenericContainers : Koan
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
 		dictionary["one"] = "uno";
 		dictionary["two"] = "dos";
-		dictionary["one"] = "ein";
-		Assert.Equal(FILL_ME_IN, dictionary["one"]);
+		dictionary["one"] = "eins";
+		Assert.Equal("eins", dictionary["one"]);
 	}
 
 	[Step(27)]
@@ -323,8 +323,8 @@ public class AboutGenericContainers : Koan
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
 		dictionary["one"] = "uno";
-		Assert.Equal(FILL_ME_IN, dictionary.ContainsKey("one"));
-		Assert.Equal(FILL_ME_IN, dictionary.ContainsKey("two"));
+		Assert.True(dictionary.ContainsKey("one"));
+		Assert.False(dictionary.ContainsKey("two"));
 	}
 
 	[Step(28)]
@@ -332,8 +332,8 @@ public class AboutGenericContainers : Koan
 	{
 		Dictionary<string, string> dictionary = new Dictionary<string, string>();
 		dictionary["one"] = "uno";
-		Assert.Equal(FILL_ME_IN, dictionary.ContainsValue("uno"));
-		Assert.Equal(FILL_ME_IN, dictionary.ContainsValue("dos"));
+		Assert.True(dictionary.ContainsValue("uno"));
+		Assert.False(dictionary.ContainsValue("dos"));
 	}
 
 	[Step(29)]
@@ -356,8 +356,8 @@ public class AboutGenericContainers : Koan
 			one[item.Key] = item.Value;
 		}
 
-		Assert.Equal(FILL_ME_IN, one["jim"]);
-		Assert.Equal(FILL_ME_IN, one["jenny"]);
-		Assert.Equal(FILL_ME_IN, one["amy"]);
+		Assert.Equal(54, one["jim"]);
+		Assert.Equal(26, one["jenny"]);
+		Assert.Equal(20, one["amy"]);
 	}
 }
