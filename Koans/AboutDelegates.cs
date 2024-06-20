@@ -33,15 +33,38 @@ public class AboutDelegates : Koan
 	public void DelegatesAreReferenceTypes()
 	{
 		//If you don't initialize a delegate it will be a null value, just as any other reference type.
-		BinaryOp op;
-		Assert.Null(FILL_ME_IN);
+		BinaryOp op; // Cannot be used => CS0165 compile-time error 
+		op = null;
+		if(op is not null)
+		{
+			try
+			{
+				Assert.True(op is not null);
+			}
+			catch (Exception e)
+			{
+				try
+				{
+					Assert.NotNull(op);
+				}
+				catch(Exception ex)
+				{
+					Console.WriteLine("Please stop writing repetitive unreachable code!");
+				}
+			}
+		}
+		else 
+		{
+			Assert.Null(op);
+		}
 	}
 	[Step(2)]
 	public void DelegatesCanBeInstantiated()
 	{
 		MyMath math = new MyMath();
 		BinaryOp op = new BinaryOp(math.Add);
-		Assert.Equal(FILL_ME_IN, op.GetMethodInfo().Name);
+		//Assert.Equal(Web.Razor.Tokenizer.Symbols.SymbolExtensions.GetMethodInfo(() => math.Add(1, 1)).Name, op.GetMethodInfo().Name);
+		Assert.Equal("Add", op.GetMethodInfo().Name);
 	}
 	[Step(3)]
 	public void DelegatesCanBeAssigned()
