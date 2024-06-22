@@ -134,10 +134,10 @@ public class AboutDelegates : Koan
 		FunctionalTricks f = new FunctionalTricks();
 		Curry adding = f.Add5;
 		//So far we've only seen one method attached to a delegate. 
-		Assert.Equal(FILL_ME_IN, adding.GetInvocationList().Length);
+		Assert.Equal(1, adding.GetInvocationList().Length);
 		//However, you can attach multiple methods to a delegate 
 		adding += f.Add10;
-		Assert.Equal(FILL_ME_IN, adding.GetInvocationList().Length);
+		Assert.Equal(2, adding.GetInvocationList().Length);
 	}
 	[Step(10)]
 	public void OnlyLastResultReturned()
