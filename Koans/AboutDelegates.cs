@@ -146,7 +146,7 @@ public class AboutDelegates : Koan
 		Curry adding = f.Add5;
 		adding += f.Add10;
 		//Delegates may have more than one method attached, but only the result of the last method is returned.
-		Assert.Equal(FILL_ME_IN, adding(5));
+		Assert.Equal(15, adding(5));
 	}
 	[Step(11)]
 	public void RemovingMethods()
@@ -155,7 +155,7 @@ public class AboutDelegates : Koan
 		Curry adding = f.Add5;
 		adding += f.Add10;
 		Assert.Equal(2, adding.GetInvocationList().Length);
-		//Remove Add5 from the invocation list
+		adding -= f.Add5;
 		Assert.Equal(1, adding.GetInvocationList().Length);
 		Assert.Equal("Add10", adding.GetMethodInfo().Name);
 	}
