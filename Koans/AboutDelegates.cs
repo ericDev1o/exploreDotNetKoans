@@ -173,30 +173,30 @@ public class AboutDelegates : Koan
 		int y = int.Parse(s);
 		Assert.Equal(42, x + y);
 	}
+	public delegate void Action<T>(T obj);
+
 	[Step(12)]
 	public void BuiltInActionDelegateTakesInt()
 	{
 		//With the release of generics in .NET 2.0 we got some delegates which will cover most of our needs. 
 		//You will see them in the base class libraries, so knowing about them will be helpful. 
 		//The first is Action<>. Action<> can take a variety of parameters and has a void return type.
-		//  public delgate void Action<T>(T obj);
-
 		Action<int> i = AssertIntEqualsFortyTwo;
-		i((int)FILL_ME_IN);
+		i(42);
 	}
 	[Step(13)]
 	public void BuiltInActionDelegateTakesString()
 	{
 		// Because the delegate is a template, it also works with any other type. 
 		Action<string> s = AssertStringEqualsFortyTwo;
-		s((string)FILL_ME_IN);
+		s("42");
 	}
 	[Step(14)]
 	public void BuiltInActionDelegateIsOverloaded()
 	{
 		//Action is an overloaded delegate so it can take more than one parameter
 		Action<int, string> a = AssertAddEqualsFortyTwo;
-		a(12, (string)FILL_ME_IN);
+		a(12, "30");
 	}
 	public class Seen
 	{
