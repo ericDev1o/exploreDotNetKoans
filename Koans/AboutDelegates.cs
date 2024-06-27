@@ -245,7 +245,7 @@ public class AboutDelegates : Koan
 	public void BuiltInPredicateDelegateStringSatisfied()
 	{
 		//Because it is a template, you can work with any type
-		Predicate<string> s = (Predicate<string>)FILL_ME_IN;
+		Predicate<string> s = (Predicate<string>)(StringEqualsFortyTwo);
 		Assert.True(s("42"));
 
 		//Predicate is not overloaded, so unlike Action<> you cannot do this...
