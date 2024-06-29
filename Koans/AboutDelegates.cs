@@ -263,7 +263,7 @@ public class AboutDelegates : Koan
 		//Predicate can be used to find an element in an array
 		var countries = new[] { "Greece", "Spain", "Uruguay", "Japan" };
 
-		Assert.Equal(FILL_ME_IN, Array.Find(countries, StartsWithS));
+		Assert.Equal("Spain", Array.Find(countries, StartsWithS));
 	}
 
 	private bool IsInSouthAmerica(string country)
@@ -277,7 +277,7 @@ public class AboutDelegates : Koan
 		//Predicate can also be used when verifying 
 		var countries = new[] { "Greece", "Spain", "Uruguay", "Japan" };
 
-		Assert.Equal(FILL_ME_IN, Array.TrueForAll(countries, IsInSouthAmerica));
+		Assert.False(Array.TrueForAll(countries, IsInSouthAmerica));
 	}
 
 	private string FirstMonth()
