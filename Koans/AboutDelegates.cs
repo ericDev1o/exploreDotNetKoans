@@ -299,7 +299,7 @@ public class AboutDelegates : Koan
 		//If you specify more than one parameter, then you are specifying the parameter types as well.
 
 		Func<string> d = FirstMonth;
-		Assert.Equal(FILL_ME_IN, d());
+		Assert.Equal("January", d());
 	}
 	[Step(21)]
 	public void FunctionReturnsInt()
