@@ -308,7 +308,7 @@ public class AboutDelegates : Koan
 		//The first type parameters define the parameter types and the last one is the return type. So the following matches
 		//a method which takes two int parameters and returns a int.
 		Func<int, int, int> a = Add;
-		Assert.Equal(FILL_ME_IN, a(1, 1));
+		Assert.Equal(2, a(1, 1));
 	}
 
 	public class Car
