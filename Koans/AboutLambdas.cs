@@ -95,7 +95,7 @@ public class AboutLambdas : Koan
 	}
 
 	[Step(6)]
-	public void ParensNotNeededOnSingleParemeterLambdas()
+	public void ParensNotNeededOnSingleParameterLambdas()
 	{
 		var numbers = new[] { 1, 2, 3, 4 };
 		var anonymous = Array.ConvertAll(numbers, delegate (int x)
@@ -108,7 +108,7 @@ public class AboutLambdas : Koan
 		{
 			return x.ToString();
 		});
-		Assert.Equal(FILL_ME_IN, anonymous);
+		Assert.Equal(lambda, anonymous);
 	}
 
 	[Step(7)]
