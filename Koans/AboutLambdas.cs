@@ -121,6 +121,11 @@ public class AboutLambdas : Koan
 		});
 		var lambda = Array.ConvertAll(numbers, x => x.ToString());
 		//When you have only one statement, the curly brackets are not needed. What other two things are also missing?
-		Assert.Equal(FILL_ME_IN, anonymous);
+		// return, brackets, delegate keyword and 3 lines of indented code are invisible
+		// for simpler more concise code
+		// at the expense of maintainability
+		// leaving it to the developer to check if compile and run are identical.
+		// One should keep in mind that further search could finally lead to be timely more involved in open source understanding.
+		Assert.Equal(lambda, anonymous);
 	}
 }
