@@ -17,11 +17,11 @@ public class AboutDirectory : Koan
 	{            
 		Directory.CreateDirectory(fullPath);
 
-		Assert.Equal(FILL_ME_IN, Directory.Exists(fullPath));
+		Assert.True(Directory.Exists(fullPath));
 
 		Directory.Delete(fullPath);
 
-		Assert.Equal(FILL_ME_IN, Directory.Exists(fullPath));
+		Assert.False(Directory.Exists(fullPath));
 	}
         
 	[Step(2)]
