@@ -30,8 +30,8 @@ public class AboutDirectory : Koan
 		var directoryInfo = new DirectoryInfo(fullPath);
 		directoryInfo.Create();
 
-		Assert.Equal(FILL_ME_IN, directoryInfo.Exists);
-		Assert.Equal(FILL_ME_IN, directoryInfo.Name);
+		Assert.True(directoryInfo.Exists);
+		Assert.Equal("temp directory", directoryInfo.Name);
 
 		directoryInfo.Delete(false);
 	}
