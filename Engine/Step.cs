@@ -75,12 +75,15 @@ namespace DotNetKoans.Engine
             console.WriteLine($"{Step.Name} has damaged your karma.".Bold().Red());
             console.WriteLine();
 
-            /*if (Exception is Exception assertException)
+            if (Exception is XunitException assertException)
             {
                 console.WriteLine("The truth you are looking for...".Bold().Green());
-                console.WriteLine($"{assertException.Actual} is not {assertException.Expected}".Bold().Green());
+                //console.WriteLine($"{assertException.Actual} is not {assertException.Expected}".Bold().Green());
+                console.WriteLine("You haven't found this time.");
+                console.WriteLine("Please search again, no more hints find out by yourself.");
+                console.WriteLine("You can do it.");
                 console.WriteLine();
-            }*/
+            }
 
             console.WriteLine("Ponder the meaning in these lines:".Cyan());
             console.WriteLine($"{String.Join('\n', Exception.GetStackTracePaths())}".Cyan());
