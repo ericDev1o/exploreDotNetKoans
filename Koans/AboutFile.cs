@@ -16,11 +16,11 @@ public class AboutFile : Koan
 	{
 		string path = IOPath.GetTempFileName(); // GetTempFileName() Creates a uniquely named, zero-byte temporary file on disk and returns the full path of that file.
             
-		Assert.Equal(FILL_ME_IN, File.Exists(path)); 
+		Assert.True(File.Exists(path)); 
 
 		File.Delete(path);
 
-		Assert.Equal(FILL_ME_IN, File.Exists(path));
+		Assert.False(File.Exists(path));
 	}
         
 	[Step(2)]
