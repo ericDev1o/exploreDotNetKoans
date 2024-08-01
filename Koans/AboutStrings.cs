@@ -73,7 +73,8 @@ public class AboutStrings : Koan
 am a
 broken line";
 		
-		var literalString = string.Concat("I", "\r\n", "am a", "\r\n", "broken line");
+		//var literalString = string.Concat("I", "\r\n", "am a", "\r\n", "broken line");//Windows
+		var literalString = string.Concat("I", "\n", "am a", "\n", "broken line");//Ubuntu
 		Assert.Equal(literalString.Length, verbatimString.Length);
 		Assert.Equal(literalString, verbatimString);
 	}

@@ -32,8 +32,8 @@ public class AboutFile : Koan
 		File.Delete(newPath);
 		File.Copy(path, newPath);
 
-		Assert.Equal(FILL_ME_IN, File.Exists(path));
-		Assert.Equal(FILL_ME_IN, File.Exists(newPath));
+		Assert.True(File.Exists(path));
+		Assert.True(File.Exists(newPath));
 	}
 
 	[Step(3)]
