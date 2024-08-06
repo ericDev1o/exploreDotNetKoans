@@ -212,17 +212,19 @@ broken line";
 	[Step(17)]
 	public void SeparatorsCanBeAdded()
 	{
-		var str = string.Format("{0:n}", 123456);
-		//Console.WriteLine(str);
-		//Console.ReadLine();
+		var str = string.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", 123456);
+		Console.WriteLine(str);
+		Console.ReadLine();
 		var strTrimmed = str.Trim();
-		Assert.Equal("123 456,000", strTrimmed);//Ubuntu24.04 default
-		//Assert.Equal("123,456.00", str);//Windows10 default
+		Assert.Equal("123,456.00", strTrimmed);//Ubuntu24.04 default
+		/*var str = string.Format("{0:n}", 123456)
+		Assert.Equal("123,456.00", str);//Windows10 default*/
 	}
 
 	[Step(18)]
 	public void CurrencyDesignatorsCanBeAdded()
 	{
+		//toDo
 		var str = string.Format("{0:c}", 123456);
 		Assert.Equal("123,456.00 XDR", str);
 	}
