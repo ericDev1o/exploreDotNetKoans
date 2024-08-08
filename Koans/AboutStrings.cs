@@ -213,10 +213,10 @@ broken line";
 	public void SeparatorsCanBeAdded()
 	{
 		var str = string.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", 123456);
-		Console.WriteLine(str);
-		Console.ReadLine();
-		var strTrimmed = str.Trim();
-		Assert.Equal("123,456.00", strTrimmed);//Ubuntu24.04 default
+		/*Console.WriteLine(str);
+		Console.ReadLine();*/
+		//var strTrimmed = str.Trim();
+		Assert.Equal("123,456.00", str);//Ubuntu24.04 default
 		/*var str = string.Format("{0:n}", 123456)
 		Assert.Equal("123,456.00", str);//Windows10 default*/
 	}
@@ -224,9 +224,21 @@ broken line";
 	[Step(18)]
 	public void CurrencyDesignatorsCanBeAdded()
 	{
-		//toDo
-		var str = string.Format("{0:c}", 123456);
-		Assert.Equal("123,456.00 XDR", str);
+		string culture = CultureInfo.InvariantCulture.Name;
+		Console.WriteLine($"The current culture is {CultureInfo.CurrentCulture.Name}");
+		Console.ReadLine();
+		CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
+		Console.WriteLine($"The current culture is {CultureInfo.CurrentCulture.Name}");
+		Assert.Equal("en-US", CultureInfo.CurrentCulture.Name);
+		int i = 123456;
+		var strC2 = i.ToString("C2");
+		Console.WriteLine(strC2);
+		Console.ReadLine();
+		Assert.Equal("$123,456.00", strC2);
+
+		//Windows10
+		/*var str = string.Format("{0:c}", 123456);
+		Assert.Equal("123,456.00 XDR", str);*/
 	}
 
 	[Step(19)]
@@ -246,6 +258,7 @@ broken line";
 	[Step(21)]
 	public void BuiltInDateFormatters()
 	{
+		//toDo
 		var str = string.Format("{0:t}", DateTime.Parse("12/16/2011 2:35:02 PM", CultureInfo.InvariantCulture));
 		Assert.Equal("14:35", str);
 	}
