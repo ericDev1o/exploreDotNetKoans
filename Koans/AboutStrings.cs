@@ -225,15 +225,15 @@ broken line";
 	public void CurrencyDesignatorsCanBeAdded()
 	{
 		string culture = CultureInfo.InvariantCulture.Name;
-		Console.WriteLine($"The current culture is {CultureInfo.CurrentCulture.Name}");
-		Console.ReadLine();
+		/*Console.WriteLine($"The current culture is {CultureInfo.CurrentCulture.Name}");
+		Console.ReadLine();*/
 		CultureInfo.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
-		Console.WriteLine($"The current culture is {CultureInfo.CurrentCulture.Name}");
+		/*Console.WriteLine($"The current culture is {CultureInfo.CurrentCulture.Name}");*/
 		Assert.Equal("en-US", CultureInfo.CurrentCulture.Name);
 		int i = 123456;
 		var strC2 = i.ToString("C2");
-		Console.WriteLine(strC2);
-		Console.ReadLine();
+		/*Console.WriteLine(strC2);
+		Console.ReadLine();*/
 		Assert.Equal("$123,456.00", strC2);
 
 		//Windows10
@@ -258,9 +258,11 @@ broken line";
 	[Step(21)]
 	public void BuiltInDateFormatters()
 	{
-		//toDo
 		var str = string.Format("{0:t}", DateTime.Parse("12/16/2011 2:35:02 PM", CultureInfo.InvariantCulture));
-		Assert.Equal("14:35", str);
+		/*Console.WriteLine(str);
+		Console.ReadLine();*/
+		//Assert.Equal("14:35", str);//Windows10
+		Assert.Equal("2:35 PM", str);
 	}
 
 	/// <summary>
@@ -369,7 +371,7 @@ broken line";
 	
 	[Step(34)]
 	public void InterpolationSupportsFormatAsWell()
-	{
+	{//to do
 		var str = $"{DateTime.Parse("12/16/2011 2:35:02 PM", CultureInfo.CreateSpecificCulture("en-US")):G}";
 		Assert.Equal("16/12/2011 14:35:02", str.ToString(CultureInfo.CreateSpecificCulture("fr-FR")));
 	}
