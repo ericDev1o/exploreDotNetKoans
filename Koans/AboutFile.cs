@@ -38,15 +38,15 @@ public class AboutFile : Koan
 
 	[Step(3)]
 	public void MoveFile()
-	{
+	{//toDo
 		string path = IOPath.GetTempFileName();
 		string newPath = IOPath.Combine(IOPath.GetTempPath(), "newFile.txt");
 	        
 		File.Delete(newPath);
 		File.Move(path, newPath);
 	        
-		Assert.Equal(FILL_ME_IN, File.Exists(path));
-		Assert.Equal(FILL_ME_IN, File.Exists(newPath));
+		Assert.True(File.Exists(path));
+		Assert.True(File.Exists(newPath));
 	}
         
 	[Step(4)]

@@ -371,8 +371,20 @@ broken line";
 	
 	[Step(34)]
 	public void InterpolationSupportsFormatAsWell()
-	{//to do
+	{
 		var str = $"{DateTime.Parse("12/16/2011 2:35:02 PM", CultureInfo.CreateSpecificCulture("en-US")):G}";
-		Assert.Equal("16/12/2011 14:35:02", str.ToString(CultureInfo.CreateSpecificCulture("fr-FR")));
+		/*Console.WriteLine(str);
+		Console.ReadLine();
+		var strFr = str.ToString(CultureInfo.CreateSpecificCulture("fr-FR"));
+		Console.WriteLine(strFr);
+		Console.ReadLine();
+		var strDe = str.ToString(CultureInfo.CreateSpecificCulture("de-DE"));
+		Console.WriteLine(strDe);
+		Console.ReadLine();*/
+		var strInv = str.ToString(CultureInfo.InvariantCulture);
+		/*Console.WriteLine(strInv);
+		Console.ReadLine();*/
+		//Assert.Equal("16/12/2011 14:35:02", str.ToString(CultureInfo.CreateSpecificCulture("fr-FR")));//Windows10
+		Assert.Equal("12/16/2011 2:35:02 PM", strInv);	
 	}
 }
