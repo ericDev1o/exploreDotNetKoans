@@ -1,4 +1,5 @@
 using Xunit;
+using System;
 using System.IO;
 using System.Text;
 using DotNetKoans.Engine;
@@ -15,11 +16,8 @@ public class AboutFile : Koan
 	public void CreatingAndDeletingFile()
 	{
 		string path = IOPath.GetTempFileName(); // GetTempFileName() Creates a uniquely named, zero-byte temporary file on disk and returns the full path of that file.
-            
 		Assert.True(File.Exists(path)); 
-
 		File.Delete(path);
-
 		Assert.False(File.Exists(path));
 	}
         
@@ -38,25 +36,33 @@ public class AboutFile : Koan
 
 	[Step(3)]
 	public void MoveFile()
-	{//toDo
+	{
 		string path = IOPath.GetTempFileName();
+		Console.WriteLine(path);
 		string newPath = IOPath.Combine(IOPath.GetTempPath(), "newFile.txt");
-	        
-		File.Delete(newPath);
+		Console.WriteLine(newPath);
+	    //toDo    
+		//File.Delete(newPath);
 		File.Move(path, newPath);
+		Console.WriteLine(path);
+		Console.WriteLine(newPath);
 	        
-		Assert.True(File.Exists(path));
+		Console.ReadLine();		
+		Assert.False(File.Exists(path));
 		Assert.True(File.Exists(newPath));
 	}
         
 	[Step(4)]
 	public void GetFileInfo()
 	{
-		string path = IOPath.GetTempFileName();
-		FileInfo fileInfo = new FileInfo(path);
-
-		Assert.Equal(FILL_ME_IN, fileInfo.Exists);
-		Assert.Equal(FILL_ME_IN, fileInfo.FullName); // what is the file name?
+		//string path = IOPath.GetTempFileName();
+		string newPath = IOPath.Combine(IOPath.GetTempPath(), "newFile2.txt");
+		FileInfo fileInfo = new FileInfo(newPath);
+		Console.WriteLine(newPath); Console.WriteLine(fileInfo.Name); Console.WriteLine(fileInfo.FullName);
+		Console.ReadLine();
+		//toDo
+		Assert.True(fileInfo.Exists);
+		Assert.Equal("/temp/newFile2.txt", fileInfo.FullName); // what is the file name?
 	}
         
 	[Step(5)]
