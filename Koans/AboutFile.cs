@@ -43,7 +43,7 @@ public class AboutFile : Koan
 		Console.WriteLine(newPath);
 	    //toDo    
 		//File.Delete(newPath);
-		File.Move(path, newPath);
+		File.Move(path, newPath);//toDo
 		Console.WriteLine(path);
 		Console.WriteLine(newPath);
 	        
@@ -68,7 +68,6 @@ public class AboutFile : Koan
 	[Step(5)]
 	public void ReadFile()
 	{
-
 		string data = "Hello World!";
 		string path = createFileAndFillIn(data);
 
@@ -82,7 +81,7 @@ public class AboutFile : Koan
 				readMessage = temp.GetString(bytes);
 			}
 		}
-		Assert.Equal(FILL_ME_IN, readMessage); // what is the message?
+		Assert.Equal("Hello World!", readMessage); // what is the message?
 	}
 
 	[Step(6)]

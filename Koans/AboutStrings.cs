@@ -73,8 +73,8 @@ public class AboutStrings : Koan
 am a
 broken line";
 		
-		//var literalString = string.Concat("I", "\r\n", "am a", "\r\n", "broken line");//Windows
-		var literalString = string.Concat("I", "\n", "am a", "\n", "broken line");//Ubuntu
+		var literalString = string.Concat("I", "\r\n", "am a", "\r\n", "broken line");//Windows
+		//var literalString = string.Concat("I", "\n", "am a", "\n", "broken line");//Ubuntu
 		Assert.Equal(literalString.Length, verbatimString.Length);
 		Assert.Equal(literalString, verbatimString);
 	}
@@ -212,13 +212,13 @@ broken line";
 	[Step(17)]
 	public void SeparatorsCanBeAdded()
 	{
-		var str = string.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", 123456);
+		// var str = string.Format(CultureInfo.InvariantCulture, "{0:0,0.00}", 123456);
 		/*Console.WriteLine(str);
 		Console.ReadLine();*/
 		//var strTrimmed = str.Trim();
-		Assert.Equal("123,456.00", str);//Ubuntu24.04 default
-		/*var str = string.Format("{0:n}", 123456)
-		Assert.Equal("123,456.00", str);//Windows10 default*/
+		//Assert.Equal("123,456.00", str);//Ubuntu24.04 default
+		var str = string.Format("{0:n}", 123456);
+		Assert.Equal("123,456.00", str);//Windows10 default
 	}
 
 	[Step(18)]
