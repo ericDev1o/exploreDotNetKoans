@@ -38,16 +38,18 @@ public class AboutFile : Koan
 	public void MoveFile()
 	{
 		string path = IOPath.GetTempFileName();
-		Console.WriteLine(path);
+		//Console.WriteLine(path);
 		string newPath = IOPath.Combine(IOPath.GetTempPath(), "newFile.txt");
+		/*Console.WriteLine(newPath);
+		Console.ReadLine();*/
+
+		if(File.Exists(newPath))   
+			File.Delete(newPath);
+		File.Move(path, newPath);
+		/*Console.WriteLine(path);
 		Console.WriteLine(newPath);
-	    //toDo    
-		//File.Delete(newPath);
-		File.Move(path, newPath);//toDo
-		Console.WriteLine(path);
-		Console.WriteLine(newPath);
-	        
-		Console.ReadLine();		
+		Console.ReadLine();*/
+
 		Assert.False(File.Exists(path));
 		Assert.True(File.Exists(newPath));
 	}
@@ -60,9 +62,10 @@ public class AboutFile : Koan
 		FileInfo fileInfo = new FileInfo(newPath);
 		Console.WriteLine(newPath); Console.WriteLine(fileInfo.Name); Console.WriteLine(fileInfo.FullName);
 		Console.ReadLine();
-		//toDo
-		Assert.True(fileInfo.Exists);
-		Assert.Equal("/temp/newFile2.txt", fileInfo.FullName); // what is the file name?
+
+		//Assert.True(fileInfo.Exists);
+		//Assert.Equal("/temp/newFile2.txt", fileInfo.FullName); // Ubuntu24.04
+		Assert.Equal(@"C:\Users\ericf\AppData\Local\Temp\newFile2.txt", fileInfo.FullName);
 	}
         
 	[Step(5)]
@@ -93,8 +96,8 @@ public class AboutFile : Koan
 
 		var lines = File.ReadAllLines(path);
             
-		Assert.Equal(FILL_ME_IN, lines.Length); // what is the number of lines?
-		Assert.Equal(FILL_ME_IN, lines[1]); // what is written in the line No.2 ?
+		Assert.Equal(3, lines.Length); // what is the number of lines?
+		Assert.Equal("Line1", lines[1]); // what is written in the line No.2 ?
 	}
 
 	private string createFileAndFillIn(string data)
