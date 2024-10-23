@@ -35,7 +35,8 @@ public class AboutLinq : Koan
 			select n;
 
 		// 3. Query execution.
-		Assert.Equal(FILL_ME_IN, lowNums.Count());
+		Assert.Equal(1, lowNums.Count());
+		Assert.Equal(new int[] { 1 }, lowNums);
 	}
 
 	[Step(2)]
@@ -45,11 +46,11 @@ public class AboutLinq : Koan
 
 		var orderedCustomers =
 			from cust in customers
-			orderby cust ascending //You can also use descending here for reverse order.
+			orderby cust descending
 			select cust;
 
-		Assert.Equal(FILL_ME_IN, orderedCustomers.First());
-		Assert.Equal(FILL_ME_IN, orderedCustomers.Last());
+		Assert.Equal("Maria", orderedCustomers.First());
+		Assert.Equal("Anna", orderedCustomers.Last());
 	}
 
 	[Step(3)]
@@ -60,7 +61,7 @@ public class AboutLinq : Koan
 		//Get just the 3 first numbers.
 		var first3Numbers = numbers.Take(3);
 
-		Assert.Equal(FILL_ME_IN, first3Numbers.Count());
+		Assert.Equal(3, first3Numbers.Count());
 	}
 
 	[Step(4)]
@@ -68,8 +69,8 @@ public class AboutLinq : Koan
 	{
 		string[] words = { "believe", "relief", "receipt", "field" };
 
-		bool iAfterE = words.Any(w => w.Contains("ei")); //Check if any of your words contain 'ei'
-		Assert.Equal(FILL_ME_IN, iAfterE);
+		bool iAfterE = words.Any(w => w.Contains("ei"));
+		Assert.True(iAfterE);
 	}
 
         
@@ -79,8 +80,7 @@ public class AboutLinq : Koan
 		var numbers = new[] {1, 2, 3, 4};
 		var result = numbers.Where(x => x > 2).ToArray();
 			
-		//What values should be in array?
-		Assert.Equal(FILL_ME_IN, result);
+		Assert.Equal(new int[] { 3, 4 }, result);
 	}
 		
 	[Step(6)]
