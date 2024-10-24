@@ -90,7 +90,7 @@ public class AboutLinq : Koan
 		var result = numbers.Select(x => x > 2).ToArray();
 			
 		//What values should be in array?
-		Assert.Equal(FILL_ME_IN, result);
+		Assert.Equal(new bool[] { false, false, true, true }, result);
 	}
 
 	[Step(7)]
@@ -101,7 +101,7 @@ public class AboutLinq : Koan
 		//Get sum of the array.
 		var sum = numbers.Sum();
 
-		Assert.Equal(FILL_ME_IN, sum);
+		Assert.Equal(45, sum);
 	}
 
 	[Step(8)]
@@ -112,7 +112,7 @@ public class AboutLinq : Koan
 		//Get minimum of the array.
 		var min = numbers.Min();
 
-		Assert.Equal(FILL_ME_IN, min);
+		Assert.Equal(0, min);
 	}
 
 	[Step(9)]
@@ -123,7 +123,7 @@ public class AboutLinq : Koan
 		//Get maximum of the array.
 		var max = numbers.Max();
 
-		Assert.Equal(FILL_ME_IN, max);
+		Assert.Equal(9, max);
 	}
 
 
@@ -135,6 +135,6 @@ public class AboutLinq : Koan
 		//Get average of the array.
 		var average = numbers.Average();
 
-		Assert.Equal(FILL_ME_IN, average);
+		Assert.Equal(4.5, average);
 	}
 }
