@@ -76,7 +76,7 @@ public class AboutBitwiseAndShiftOperator : Koan
 	{
 		int x = 3 & 4 ^ 4 & ~8;
 
-		Assert.Equal(0, x);
+		Assert.Equal(4, x);
 	}
 
 	[Step(8)]
