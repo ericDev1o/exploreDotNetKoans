@@ -89,7 +89,7 @@ public class AboutBitwiseAndShiftOperator : Koan
 		//then it will become 8
 		int x = 10 << 2;
 
-		Assert.Equal(8, x);
+		Assert.Equal(40, x);
 	}
 
 	[Step(9)]
@@ -125,7 +125,7 @@ public class AboutBitwiseAndShiftOperator : Koan
 	{
 		int x = (8 << 2) & (~5) & 8 | 10 | (5 >> 1);
 
-		Assert.Equal(10, x);
+		Assert.Equal(14, x);
 	}
 
 	[Step(13)]
