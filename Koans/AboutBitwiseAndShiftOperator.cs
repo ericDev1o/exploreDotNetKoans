@@ -109,7 +109,7 @@ public class AboutBitwiseAndShiftOperator : Koan
 	{
 		int x = (5 << 2) & 8 ^ 3;
 
-		Assert.Equal(0, x);
+		Assert.Equal(3, x);
 	}
 
 	[Step(11)]
